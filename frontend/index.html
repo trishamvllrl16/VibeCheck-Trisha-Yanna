@@ -4,12 +4,86 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VibeCheck 411L</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif; /* Rounded modern font */
+      background-color: #e6c0dc;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.1s;
+    }
+    h1, h2 { 
+      font-family: 'Pacifico', cursive; /* Curvy font */
+      color: #2c3e50; 
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    button {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: bold;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+    
+    #btnSmash { background-color: #e9887e; position: relative; }
+
+    #out {
+      background-color: #2d3436;
+      color: #fab1a0;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      min-height: 100px;
+      font-family: 'Courier New', Courier, monospace;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* ANIMATIONS */
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      20% { transform: translate(-3px, 0px) rotate(-1deg); }
+      40% { transform: translate(3px, 2px) rotate(1deg); }
+      60% { transform: translate(-3px, 1px) rotate(-1deg); }
+      80% { transform: translate(3px, 1px) rotate(1deg); }
+      100% { transform: translate(1px, -2px) rotate(0deg); }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .shake-effect { animation: shake 0.2s; }
+    .pop-effect { animation: pop 0.2s; }
+  </style>
 </head>
 <body>
   <h1>VibeCheck 411L</h1>
-  <p>Click buttons. This page will fetch data from your Node.js API.</p>
+  <p>Interact with the Node.js API using the controls below.</p>
 
-  <div>
+  <div class="button-container">
     <button id="btnFortune">🔮 Fortune</button>
     <button id="btnJoke">😂 Joke</button>
     <button data-mood="happy" class="btnMood">😄 Happy</button>
@@ -19,8 +93,8 @@
     <button id="btnSecret">🕵️ Secret</button>
   </div>
 
-  <h2>Output</h2>
-  <pre id="out">Ready...</pre>
+  <h2>API Response Output</h2>
+  <pre id="out">Waiting for input...</pre>
 
   <script src="app.js"></script>
 </body>
