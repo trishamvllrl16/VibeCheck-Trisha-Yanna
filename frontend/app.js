@@ -15,6 +15,25 @@ async function getJSON(url) {
   return res.json();
 }
 
+// SMASH BUTTON WITH EFFECTS
+document.getElementById("btnSmash").addEventListener("click", async () => {
+  const btn = document.getElementById("btnSmash");
+  
+  // TRIGGER EFFECTS
+  document.body.classList.add("shake-effect");
+  btn.classList.add("pop-effect");
+
+  const res = await fetch(`${API_BASE}/api/smash`, { method: "POST" });
+  const data = await res.json();
+  show({ message: "SMASH registered 💥", ...data });
+
+  // REMOVE EFFECTS SO THEY CAN RUN AGAIN
+  setTimeout(() => {
+    document.body.classList.remove("shake-effect");
+    btn.classList.remove("pop-effect");
+  }, 200);
+});
+
 document.getElementById("btnFortune").addEventListener("click", async () => {
   const data = await getJSON(`${API_BASE}/api/fortune`);
   show(data);
